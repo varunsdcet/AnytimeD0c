@@ -269,9 +269,18 @@ export default class Speciality extends Component {
         this.setState({email:this.state.data[index].id})
     }
 
-    _renderItems = ({item,index}) => {
+    speciality = ({item}) => {
+        alert(JSON.stringify(item))
+        GLOBAL.searchSpeciality = item.title
+        this.props.navigation.navigate('SearchSpeciality')
+    }
+
+    renderRowItem2 = (itemData) => {
+
 
         return (
+            <TouchableOpacity onPress={() => this.speciality(itemData)
+            }>
 
             <View   style  = {{width:window.width/2.2 - 8,margin:4, height:200,backgroundColor:'white',shadowColor: "#000",
                 shadowOffset: {
@@ -286,18 +295,19 @@ export default class Speciality extends Component {
 
 
 
-                <Image source={{uri :item.image}}
+                <Image source={{uri :itemData.item.image}}
                        style  = {{width:window.width/2.2 - 8, height:150,marginTop: 3,alignSelf:'center',marginLeft:5,
                        }}
 
                 />
 
                 <Text style = {{fontSize:15,margin:1,fontFamily:'Poppins-Medium',color:'##0592CC',textAlign:'center',width:window.width/2.2 - 8}}>
-                    {item.title}
+                    {itemData.item.title}
 
                 </Text>
 
             </View>
+            </TouchableOpacity>
         )
     }
     render() {
@@ -326,7 +336,7 @@ export default class Speciality extends Component {
                               data={this.state.data}
                               numColumns={2}
                               keyExtractor = { (item, index) => index.toString() }
-                              renderItem={this._renderItems}
+                              renderItem={this.renderRowItem2}
                     />
 
 

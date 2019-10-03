@@ -501,7 +501,11 @@ export default class Home extends Component {
     selectedFirst1 = (itemData) => {
       //  this.props.navigation.navigate('ArticleDescription')
     }
-
+    selectedFirstsd = (item) => {
+        GLOBAL.searchSpeciality = item
+        this.props.navigation.navigate('SearchSpeciality')
+    //  this.props.navigation.navigate('ArticleDescription')
+}
     renderRowItem2s = (itemData) => {
 
 
@@ -542,7 +546,7 @@ export default class Home extends Component {
 
 
         return (
-            <TouchableOpacity onPress={() => this.selectedFirst(itemData.index)
+            <TouchableOpacity onPress={() => this.selectedFirstsd(itemData.item.title)
             }>
                 <View   style  = {{width:window.width/2.2 - 8,margin:4, height:200,backgroundColor:'white',shadowColor: "#000",
                     shadowOffset: {
